@@ -1,0 +1,16 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+
+        stack = []
+        for i in s:
+            if i in "({[":
+                stack.append(i)  #push into stack
+        
+            else:
+                if not stack:   #if stack is empty
+                    return False #invalid string
+                top = stack.pop()  # rm a last opening bracket from stack
+                if (i == ")" and top != "(") or (i == "]" and top != "[") or (i == "}" and top != "{"):
+                    return False  # if it is mismatch then it is invalid!
+
+        return len(stack) == 0  #after loop, stack is empty then it is valid otherwise Invalid
