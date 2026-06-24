@@ -1,0 +1,19 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        
+        pointer = 1 #ist element always be unique
+
+        for j in range(1, len(nums)): #loop start from index 1 becoz [0] index is already unique.
+            if nums[j] != nums[j - 1]: #if current element is different from previous.
+                nums[pointer] = nums[j] #overwrite in nums[pointer]
+                pointer+= 1             #unique will be increase 
+        
+        return pointer      # count the unique element.
+
+
+#how it works:-
+#Array sorted hai → duplicates hamesha consecutive honge.
+#Ek pointer (i) rakho jo unique elements track kare.
+#Dusra pointer (j) array traverse kare.
+#Agar nums[j] != nums[j-1] → naya unique element mila → usko nums[i] me overwrite karo aur i++.
+#End me i = unique count, aur nums[:i] = unique list.
