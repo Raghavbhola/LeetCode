@@ -1,0 +1,10 @@
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        
+        k = [x for x in nums if x != val]  #filter out val
+        
+        for i in range(len(k)): #overwrite nums with filtered val.
+            nums[i] = k[i]
+
+            # print(nums[i],end=",")
+        return len(k)   #we want omly return len.
