@@ -1,0 +1,13 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        
+        digits[-1] += 1 # last element +1
+
+        for i in range(len(digits)-1,-1,-1):   # right to left loop
+            if digits[i] == 10:  # if digit is 10
+                digits[i] = 0    #set at 0
+                if i == 0:       #if it is 1st digit   
+                    digits.insert(0,1) #insert at first position
+                else:
+                    digits[i-1] += 1   #it is carry propagate step.
+        return digits    #returrn the final digits.
