@@ -1,0 +1,10 @@
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        #merge it at m+n size of nums1
+        nums1[m:] = nums2 #Replace 'num1' with whatever the  value m is.....!
+        nums1.sort()    # for sort
+
+        return nums1
