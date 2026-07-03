@@ -1,0 +1,25 @@
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        n = len(s)
+        count = 0
+        for i in range(n):            #start pointrer loop
+            for j in range(i, n+1): #end pointer loop
+                sub = s[i:j]          #substring from i to j , string slicing
+                if 'a' in sub and 'b'in sub and'c' in sub:
+                    # print(sub)
+                    count += 1
+
+        return count
+
+# this code is brute force, so to check all substring it will take O(n3) time. So, optimize it.
+# using two pointer and sliding window approach.
+
+        last = [-1, -1, -1] #'a','b','c' to store last seen index
+        count = 0
+        for i, ch in enumerate(s):  #to update all chr index
+            last[ord(ch) - ord('a')] = i  
+            if -1 not in last:            #if 3 chr has arrived
+                count += 1 + min(last)    #add valid substring
+        return count    
+
+# this code will take O(n) time.
