@@ -1,0 +1,15 @@
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        result = []
+        freq = {}
+        for i in nums1:
+            if i in freq:
+                freq[i] += 1
+            else:
+                freq[i] = 1
+
+            for j in nums2:
+                if j in freq:
+                    result.append(j)
+        re = set(result)
+        return list(re)                    
