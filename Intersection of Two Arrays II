@@ -1,0 +1,15 @@
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        
+        result = []
+        freq = {}
+        for i in nums1:   #count frequency of nums1
+            if i in freq:
+                freq[i] += 1
+            else:
+                freq[i] = 1
+        for j in nums2:   #traverse the nums2
+            if j in freq and freq[j] > 0:
+                result.append(j)
+                freq[j] -= 1 #reduce count            
+        return result            
