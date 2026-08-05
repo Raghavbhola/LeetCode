@@ -1,0 +1,25 @@
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        # result = []
+        # result1 = []
+        # for i in nums:
+        #     if i == 0:
+        #         result.append(i)
+        #     else:
+        #         result1.append(i)
+
+        # final = result1+result       
+        # # print("["+",".join(str(x) for x in final)+"]")
+        # return final    
+        result = 0   #run pointer who tells the next is non-0 elements
+        for i in range(len(nums)):  
+            if nums[i] != 0: # if elements != 0
+                nums[result] = nums[i]  # then copy it to the result
+                result += 1   #for counter
+        for x in range(result, len(nums)):   # remaining position fill with 0
+            nums[x] = 0       
+
+        return nums    
