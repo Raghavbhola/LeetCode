@@ -1,0 +1,17 @@
+class Solution:
+    def sortArrayByParity(self, nums: List[int]) -> List[int]:
+    
+        temp = nums[:]  # copy of original
+        even = 0
+
+        for i in range(len(nums)):
+            if temp[i] % 2 == 0:
+                nums[even] = temp[i]
+                even += 1
+
+        for x in range(len(nums)):
+            if temp[x] % 2 != 0:
+                nums[even] = temp[x]
+                even += 1  
+        return nums            
+        
