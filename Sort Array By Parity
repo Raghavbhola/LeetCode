@@ -5,13 +5,18 @@ class Solution:
         even = 0
 
         for i in range(len(nums)):
-            if temp[i] % 2 == 0:
+            if temp[i] % 2 == 0:   #even no.
                 nums[even] = temp[i]
-                even += 1
+                even += 1          # it will create copy of even no.
 
         for x in range(len(nums)):
-            if temp[x] % 2 != 0:
+            if temp[x] % 2 != 0:    #odd no.
                 nums[even] = temp[x]
-                even += 1  
+                even += 1           # it will create copy of odd no.
         return nums            
-        
+
+# 2nd approach use 2 lists and join-->
+        even = [x for x in nums if x % 2 == 0]
+        odd = [x for x in nums if x % 2 != 0]
+        nums = even + odd
+        return nums
