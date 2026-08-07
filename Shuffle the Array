@@ -1,0 +1,10 @@
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        n = len(nums) // 2
+        result = [nums[:n], nums[n:]]   # first half, second half
+
+        re = []   #empty list to store.
+        for i in range(len(result[0])):
+            re.append(result[0][i]) # index 0 from first half of result
+            re.append(result[1][i]) # index 0 from second half of result
+        return re    
