@@ -1,0 +1,16 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        freq = {}
+        
+        for i in nums:
+            if i in freq:
+                freq[i] += 1
+            else:
+                freq[i] = 1
+        max_count = 0
+        majority = 0
+        for value in freq:
+            if freq[value] > max_count:
+                max_count = freq[value]
+                majority = value
+        return majority      
