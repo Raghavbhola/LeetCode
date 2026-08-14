@@ -1,0 +1,6 @@
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        acs = [i*i for i in nums] 
+        acs.sort()
+        return acs
+        
