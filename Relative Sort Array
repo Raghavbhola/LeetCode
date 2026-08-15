@@ -1,0 +1,23 @@
+class Solution:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        
+        #freq. dict for arr1
+        freq = {}
+        for i in arr1:
+            if i in freq:
+                freq[i] += 1
+            else:
+                freq[i] = 1
+
+        result =[]  #empty list
+
+        #-- Putting the elements in arr2 order
+        for i in arr2:
+            if i in freq:
+                result.extend([i] * freq[i]) #Repeat elements of freq time
+                del freq[i]
+
+        #remaining of elements (not in arr2) sorted in ascending order
+        for i in sorted(freq.keys()):
+            result.extend([i] * freq[i])
+        return result    
