@@ -1,0 +1,15 @@
+class Solution:
+    def rotate(self, nums: list[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        # rotate = nums[-k:]
+        # res = []
+        # for i in nums:
+        #     if i not in rotate:
+        #         res.append(i)
+        # return (rotate + res)
+
+        k = k % len(nums)          # safe agar k > len(nums) hota too reduce ho jata.
+        nums[:] = nums[-k:] + nums[:-k]  #in place rotation
+        return nums
