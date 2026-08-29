@@ -1,0 +1,16 @@
+class Solution:
+    def arrayPairSum(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        pairs = []
+
+        for i in range(0, n, 2):
+            a = nums[i]
+            b = nums[i+1]
+            pairs.append((a,b))
+
+        mins = []
+        for m in pairs:
+            mins.append(min(m))
+
+        return sum(mins)    
