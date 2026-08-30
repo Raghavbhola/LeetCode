@@ -1,0 +1,6 @@
+class Solution:
+    def distributeCandies(self, candyType: List[int]) -> int:
+        allow_candies = len(candyType) // 2
+        unique = len(set(candyType))
+
+        return min(allow_candies, unique)
