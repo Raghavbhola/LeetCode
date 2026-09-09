@@ -1,0 +1,14 @@
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:
+        word = ["qwertyuiop", "asdfghjkl", "zxcvbnm"]
+
+        found = []
+        for i in words:
+            lw =i.lower()
+            for j in word:
+                if all(ch in j for ch in lw):
+                    found.append(i)
+                    break
+        return found            
+
+        
