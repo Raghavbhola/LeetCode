@@ -1,13 +1,25 @@
 class Solution:
     def nextGreaterElements(self, nums: list[int]) -> list[int]:
 
-        stack = []  #pending element
-        mapp = {} #to store next Greater
+        # stack = []  #pending element
+        # mapp = {} #to store next Greater
 
-        for i in nums:
-            while stack and stack[-1] < i:
-                mapp[stack.pop()] = i
-            stack.append(i)
-        nxt = [mapp.get(x,-1) for x in nums]
-        return nxt        
+        # for i in nums:
+        #     while stack and stack[-1] < i:
+        #         mapp[stack.pop()] = i
+        #     stack.append(i)
+        # nxt = [mapp.get(x,-1) for x in nums]
+        # return nxt        
+
+        n = len(nums)
+        res = [-1] * n # default ans list, all -1
+        stack = []
+        for i in range(2*n): #loop twice (circular array handle)
+
+            while stack and nums[stack[-1]] < nums[i% n]: # if stack(last element) > current se
+                res[stack.pop()] = nums[i% n]   #when will be the next greater element  --> update res.
+
+            if i < n:   #only first round push index...   and 2nd round --> only push.
+                stack.append(i)
+        return res            
         
