@@ -1,0 +1,13 @@
+class Solution:
+    def nextGreaterElements(self, nums: list[int]) -> list[int]:
+
+        stack = []  #pending element
+        mapp = {} #to store next Greater
+
+        for i in nums:
+            while stack and stack[-1] < i:
+                mapp[stack.pop()] = i
+            stack.append(i)
+        nxt = [mapp.get(x,-1) for x in nums]
+        return nxt        
+        
