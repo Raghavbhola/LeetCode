@@ -1,0 +1,48 @@
+class Solution:
+    def calculate(self, s: str) -> int:
+        # e = eval(s)
+        # return e
+        # s = list(s)
+        # stack = []
+        # op = None
+        # for ch in s:
+        #     if ch.isdigit():
+        #         num = int(ch)
+        #         if op == "+":
+        #             stack[-1] = stack[-1] + num
+        #         elif op == "-":
+        #             stack[-1] = stack[-1] - num 
+        #         elif op == "*":
+        #             stack[-1] = stack[-1] * num 
+        #         elif op == "/":
+        #             stack[-1] = stack[-1] // num
+        #         else:
+        #             stack.append(num)
+        #     else:
+        #         op = ch
+        # return stack[-1] 
+        #------------------------        
+        stack = []
+        ans = 0
+        num = 0
+        op = '+'
+
+        for ch in s:
+            if ch.isdigit():
+                num = num*10 + int(ch)   # multi-digit number build
+            elif ch in '+-':
+                ans = ans + num if op == '+' else ans - num
+                num = 0
+                op = ch
+            elif ch == '(':
+                stack.append((ans, op))
+                ans, op = 0, '+'
+            elif ch == ')':
+                ans = ans + num if op == '+' else ans - num
+                num = 0
+                prev_ans, prev_op = stack.pop()
+                ans = prev_ans + ans if prev_op == '+' else prev_ans - ans
+
+        # last number
+        ans = ans + num if op == '+' else ans - num
+        return ans
