@@ -1,0 +1,17 @@
+from math import gcd, lcm
+class Solution:
+    def maxLength(self, nums: List[int]) -> int:
+        ans = 0
+
+        for i in range(len(nums)):
+            p = 1   #prod
+            g = 0   #gcd 
+            l = 1   #lcm
+            for j in range(i, len(nums)):
+                p *= nums[j]
+                g = nums[j] if g == 0 else gcd(g, nums[j])
+                l = lcm(l, nums[j])
+
+                if p == g * l:  #prod(arr) == lcm(arr) * gcd(arr)
+                    ans = max(ans, j-i+1)
+        return ans            
