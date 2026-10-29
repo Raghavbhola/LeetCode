@@ -10,11 +10,12 @@ class Solution:
                 mx = price - mn
         return mx            
 
-#---------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------
+
         min_price = prices[0]
         max_profit = 0
 
         for p in prices:
-            min_price = min(min_price, p)
-            max_profit = max(max_profit, p - min_price)
+            min_price = min(min_price, p)        # sabse sasta buy price update karo
+            max_profit = max(max_profit, p - min_price)   # agar aaj sell kree to kitna profit milega
         return max_profit    
